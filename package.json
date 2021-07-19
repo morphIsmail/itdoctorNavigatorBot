@@ -1,0 +1,26 @@
+{
+  "name": "itdoctornavigatorbot",
+  "version": "1.0.0",
+  "description": "ITDoctor - Navigator on YouTube Channel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "telegraf": "^4.4.0"
+  }
+}
