@@ -17,7 +17,7 @@ const paid_course_s = require('./modules/paid_course_s')
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 // Старт бота
-bot.start((ctx) => ctx.reply(`Привет ${ctx.message.from.first_name} ${ctx.message.from.last_name}! Этот бот призван помочь тебе научиться создавать сайты, программировать, моделировать и изучить многое другое. Посмотреть все доступные команды /help`))
+bot.start((ctx) => ctx.reply(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Этот бот призван помочь тебе научиться создавать сайты, программировать, моделировать и изучить многое другое. Посмотреть все доступные команды /help`))
 
 // Функция для обработки кнопок, name - название кнопки, src - путь к изображению, text - текст для вывода
 function addActionBot(name, src, text) {
@@ -356,7 +356,7 @@ bot.command('learn_emmet', async (ctx) => {
 // Команда /training_plan_2021 - План обучения в 2021
 bot.command('training_plan_2021', async (ctx) => {
   try {
-    await ctx.replyWithHTML('Посмотрев видео вы узнаете, как можно на моем канале бесплатно научится создавать сайты с 0. Обязательной пользуйтесь схемой-навигатором, там все подробно расписано по пунктам.\n<a href="https://t.me/itdoctorstudio/1736">Схема обучения (SVG)</a>\n<a href="https://youtu.be/GnF56lwjMb4">Видео урок по схеме</a>', {
+    await ctx.replyWithHTML('Посмотрев видео вы узнаете, как можно на моем канале бесплатно научится создавать сайты с 0. Обязательной пользуйтесь схемой-навигатором, там все подробно расписано по пунктам.\n<a href="https://t.me/itdoctorstudio/1879">Схема обучения (PDF)</a>\n<a href="https://t.me/itdoctorstudio/1736">Схема обучения (SVG)</a>\n<a href="https://youtu.be/GnF56lwjMb4">Видео урок по схеме</a>', {
       disable_web_page_preview: true
     })
   } catch (e) {
