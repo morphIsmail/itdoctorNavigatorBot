@@ -57,7 +57,7 @@ const free_course = [
   ],
   [
     // 7 Лайфхаки
-    '<b>Лайфхаки</b>\n\nВ этом плейлисте собраны короткие видео YouTube Shorts с разными полезными лайфхаками. Каждое видео длится не дольше одной минуты.\n\n28 видео\n\n<a href="https://www.youtube.com/playlist?list=PLuY6eeDuleIObijZKfE6zxneHDULP384M">Смотреть</a>',
+    '<b>Лайфхаки</b>\n\nВ этом плейлисте собраны короткие видео YouTube Shorts с разными полезными лайфхаками. Каждое видео длится не дольше одной минуты.\n\n32 видео\n\n<a href="https://www.youtube.com/playlist?list=PLuY6eeDuleIObijZKfE6zxneHDULP384M">Смотреть</a>',
   ],
   [
     // 8 Unity и Blender 0 Blender 1 Unity
