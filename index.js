@@ -9,10 +9,8 @@ const {
 const CONST = require('./modules/const')
 // Подключить текст для бесплатных курсов
 const free_course = require('./modules/free_course')
-// Подключить текст для платных курсов Udemy
-const paid_course_u = require('./modules/paid_course_u')
-// Подключить текст для платных курсов Stepik
-const paid_course_s = require('./modules/paid_course_s')
+// Подключить текст для платных курсов
+const paid_course = require('./modules/paid_course')
 // Передать токен
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -326,33 +324,63 @@ bot.command('paid_course_u', async (ctx) => {
       ],
       [Markup.button.callback('Базы данных MySQL', 'btn_category_u7')],
       [Markup.button.callback('Язык программирования PHP', 'btn_category_u8')],
-      [Markup.button.callback('Сайт на Wordpress', 'btn_category_u9')]
+      [Markup.button.callback('Сайт на Wordpress', 'btn_category_u9')],
+      [Markup.button.callback('Планировщик задач Gulp', 'btn_category_u10')],
+      [Markup.button.callback('Bootstrap 5 для начинающих', 'btn_category_u11')]
     ]))
   } catch (e) {
     console.error(e)
   }
 })
-send_msg_action('btn_category_u1', 'img/paid_course/u1.jpg', paid_course_u[0])
-send_msg_action('btn_category_u2', 'img/paid_course/u2.jpg', paid_course_u[1])
-send_msg_action('btn_category_u3', 'img/paid_course/u3.jpg', paid_course_u[2])
-send_msg_action('btn_category_u4', 'img/paid_course/u4.jpg', paid_course_u[3])
-send_msg_action('btn_category_u5', 'img/paid_course/u5.jpg', paid_course_u[4])
-send_msg_action('btn_category_u6', 'img/paid_course/u6.jpg', paid_course_u[5])
-send_msg_action('btn_category_u7', 'img/paid_course/u7.jpg', paid_course_u[6])
-send_msg_action('btn_category_u8', 'img/paid_course/u8.jpg', paid_course_u[7])
-send_msg_action('btn_category_u9', 'img/paid_course/u9.jpg', paid_course_u[8])
+send_msg_action('btn_category_u1', 'img/paid_course/u1.jpg', paid_course('html'))
+send_msg_action('btn_category_u2', 'img/paid_course/u2.jpg', paid_course('js'))
+send_msg_action('btn_category_u3', 'img/paid_course/u3.jpg', paid_course('jquery'))
+send_msg_action('btn_category_u4', 'img/paid_course/u4.jpg', paid_course('vue'))
+send_msg_action('btn_category_u5', 'img/paid_course/u5.jpg', paid_course('git'))
+send_msg_action('btn_category_u6', 'img/paid_course/u6.jpg', paid_course('bolt'))
+send_msg_action('btn_category_u7', 'img/paid_course/u7.jpg', paid_course('mysql'))
+send_msg_action('btn_category_u8', 'img/paid_course/u8.jpg', paid_course('php'))
+send_msg_action('btn_category_u9', 'img/paid_course/u9.jpg', paid_course('wp'))
+send_msg_action('btn_category_u10', 'img/paid_course/u10.jpg', paid_course('gulp'))
+send_msg_action('btn_category_u11', 'img/paid_course/u11.jpg', paid_course('bs'))
 
 // Команда /paid_course_s - Stepik курсы
 bot.command('paid_course_s', async (ctx) => {
   try {
     await ctx.replyWithHTML(`<b>Платные курсы на Stepik</b>`, Markup.inlineKeyboard([
-      [Markup.button.callback('Игра на Vue.js', 'btn_category_s4')]
+      [
+        Markup.button.callback('HTML + CSS', 'btn_category_s1'),
+        //Markup.button.callback('Супер JavaScript', 'btn_category_s2')
+      ],
+      [
+        //Markup.button.callback('jQuery с нуля', 'btn_category_s3'),
+        Markup.button.callback('Игра на Vue.js', 'btn_category_s4')
+      ],
+      [
+        Markup.button.callback('Git + GitHub', 'btn_category_s5'),
+        Markup.button.callback('Unity Bolt', 'btn_category_s6')
+      ],
+      [Markup.button.callback('Базы данных MySQL', 'btn_category_s7')],
+      //[Markup.button.callback('Язык программирования PHP', 'btn_category_s8')],
+      //[Markup.button.callback('Сайт на Wordpress', 'btn_category_s9')],
+      [Markup.button.callback('Планировщик задач Gulp', 'btn_category_s10')],
+      [Markup.button.callback('Bootstrap 5 для начинающих', 'btn_category_s11')]
     ]))
   } catch (e) {
     console.error(e)
   }
 })
-send_msg_action('btn_category_s4', 'img/paid_course/u4.jpg', paid_course_s[3])
+send_msg_action('btn_category_s1', 'img/paid_course/u1.jpg', paid_course('html', false))
+// send_msg_action('btn_category_s2', 'img/paid_course/u2.jpg', paid_course('js', false))
+// send_msg_action('btn_category_s3', 'img/paid_course/u3.jpg', paid_course('jquery', false))
+send_msg_action('btn_category_s4', 'img/paid_course/u4.jpg', paid_course('vue', false))
+send_msg_action('btn_category_s5', 'img/paid_course/u5.jpg', paid_course('git', false))
+send_msg_action('btn_category_s6', 'img/paid_course/u6.jpg', paid_course('bolt', false))
+send_msg_action('btn_category_s7', 'img/paid_course/u7.jpg', paid_course('mysql', false))
+// send_msg_action('btn_category_s8', 'img/paid_course/u8.jpg', paid_course('php', false))
+// send_msg_action('btn_category_s9', 'img/paid_course/u9.jpg', paid_course('wp', false))
+send_msg_action('btn_category_s10', 'img/paid_course/u10.jpg', paid_course('gulp', false))
+send_msg_action('btn_category_s11', 'img/paid_course/u11.jpg', paid_course('bs', false))
 
 // Команда /crib_js_date - Шпаргалка по date JS
 bot.command('crib_js_date', async (ctx) => {
