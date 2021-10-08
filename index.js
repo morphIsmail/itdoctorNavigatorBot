@@ -297,9 +297,14 @@ send_msg_action('btn_category8', false, free_course[7][0], [[Markup.button.url('
 bot.action('btn_category9', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.replyWithHTML('<b>3D и Gamedev</b>\n2 курса\n3 видео урока\n2 часа 16 минут', Markup.inlineKeyboard([
-      Markup.button.callback('1. Blender', 'category9_btn1'),
-      Markup.button.callback('2. Unity', 'category9_btn2'),
+    await ctx.replyWithHTML('<b>3D и Gamedev</b>\n3 курса\n17 видео уроков\n5 часов 16 минут', Markup.inlineKeyboard([
+      [
+        Markup.button.callback('1. Blender', 'category9_btn1'),
+        Markup.button.callback('2. Unity', 'category9_btn2'),
+      ],
+      [
+        Markup.button.callback('3. Платформер Unity Bolt', 'category9_btn3'),
+      ],
     ]))
   } catch (e) {
     console.error(e)
@@ -307,6 +312,7 @@ bot.action('btn_category9', async (ctx) => {
 })
 send_msg_action('category9_btn1', 'img/free_course/c9_b1.jpg', free_course[8][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIN8XC9TS47ul2_-if5H2Whr')]])
 send_msg_action('category9_btn2', 'img/free_course/c9_b2.jpg', free_course[8][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINkImTtyf73C9AH-iNk56ns')]])
+send_msg_action('category9_btn3', 'img/paid_course/6.jpg', free_course[8][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPZ8LgiKvEg6IGCDlvNzLz-')]])
 
 // Команда /paid_course - платные курсы
 bot.command('paid_course', async (ctx) => {
@@ -453,7 +459,7 @@ bot.command('learn_emmet', async (ctx) => {
 // Команда /training_plan_2021 - План обучения в 2021
 bot.command('training_plan_2021', async (ctx) => {
   try {
-    await ctx.reply('Это план обучения созданию сайтов в 2021 году. Посмотрев видео урок вы узнаете, как можно на моем канале бесплатно научится создавать сайты с 0. Обязательной пользуйтесь схемой-навигатором, там все подробно расписано по пунктам', Markup.inlineKeyboard(
+    await ctx.reply('Это план обучения созданию сайтов в 2021 году. Посмотрев видео урок вы узнаете, как можно на моем канале бесплатно научится создавать сайты с 0. Обязательно пользуйтесь схемой-навигатором, там все подробно расписано по пунктам', Markup.inlineKeyboard(
       [
         Markup.button.url('Схема PDF', 'https://t.me/itdoctorstudio/1879'),
         Markup.button.url('Схема SVG', 'https://t.me/itdoctorstudio/1736'),
@@ -576,7 +582,7 @@ bot.action('btn_category_m4', async (ctx) => {
 bot.action('btn_category_m5', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.reply('Книги по различным языкам, библиотекам и фреймворкам. Тут собраны только лучшие книги большинство из которых я сам прочитал и могу гарантировать их качество. Так же много задач для программирования на любом языке и отдельно для практика на JavaScript', Markup.inlineKeyboard(
+    await ctx.reply('Книги по различным языкам, библиотекам и фреймворкам. Тут собраны только лучшие книги большинство из которых я сам прочитал и могу гарантировать их качество. Так же много задач для программирования на любом языке и отдельно для практики на JavaScript', Markup.inlineKeyboard(
       [
         [Markup.button.url('Книги по HTML и CSS', 'https://t.me/itdoctorstudio/2133')],
         [Markup.button.url('Книги по JavaScript', 'https://t.me/itdoctorstudio/2134')],

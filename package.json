@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "back": "nohup node index &",
+    "pm2": "pm2 start index.js"
   },
   "author": "Ismail Useinov",
   "license": "ISC",
