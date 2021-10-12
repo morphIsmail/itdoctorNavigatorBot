@@ -22,7 +22,18 @@ bot.start((ctx) => ctx.reply(`Привет ${ctx.message.from.first_name ? ctx.m
 ]).resize()))
 
 // Помощь
-bot.help((ctx) => ctx.replyWithHTML(CONST.COMMANDS))
+bot.help(async (ctx) => {
+  try {
+    await ctx.replyWithHTML(CONST.COMMANDS, Markup.inlineKeyboard(
+      [
+        Markup.button.url('Обзор бота', 'https://youtu.be/IZj7up7CDdU'),
+        Markup.button.url('Как создать бота', 'https://youtu.be/YxHWfDdjIek'),
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 // Кнопка "Об авторе"
 bot.hears('❓ Об авторе', async (ctx) => {
