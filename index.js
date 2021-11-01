@@ -119,7 +119,7 @@ bot.command('free_course', async (ctx) => {
       [Markup.button.callback('Инструменты веб-разработчика', 'btn_category2')],
       [Markup.button.callback('Основы вёрстки HTML и CSS', 'btn_category3')],
       [Markup.button.callback('Frontend разработка JS и jQuery', 'btn_category4')],
-      [Markup.button.callback('Фреймворки', 'btn_category5')],
+      [Markup.button.callback('CSS и JS Фреймворки', 'btn_category5')],
       [Markup.button.callback('Вёрстка сайта с нуля', 'btn_category6')],
       [Markup.button.callback('Backend разработка PHP и MySQL', 'btn_category7')],
       [Markup.button.callback('Лайфхаки', 'btn_category8')],
@@ -236,10 +236,11 @@ send_msg_action('category4_btn5', 'img/free_course/c4_b5.jpg', free_course[3][4]
 bot.action('btn_category5', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.replyWithHTML('<b>Фреймворки</b>\n2 курса\n23 видео урока\n6 часов 40 минут', Markup.inlineKeyboard([
+    await ctx.replyWithHTML('<b>CSS и JS Фреймворки</b>\n3 курса\n38 видео уроков\n9 часов 40 минут', Markup.inlineKeyboard([
       [
         Markup.button.callback('1. Bootstrap 4', 'category5_btn1'),
-        Markup.button.callback('2. Bootstrap 5', 'category5_btn2')
+        Markup.button.callback('2. Bootstrap 5', 'category5_btn2'),
+        Markup.button.callback('3. Vue.js', 'category5_btn3'),
       ],
     ]))
   } catch (e) {
@@ -248,6 +249,7 @@ bot.action('btn_category5', async (ctx) => {
 })
 send_msg_action('category5_btn1', 'img/free_course/c5_b1.jpg', free_course[4][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIP8cwKmwmT2pAGFMnhI5qNO')]])
 send_msg_action('category5_btn2', 'img/free_course/c5_b2.jpg', free_course[4][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINmJ4DV22gtPL4--HQ49Df3')]])
+send_msg_action('category5_btn3', 'img/paid_course/4.jpg', free_course[4][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPrHjeWPtEw6KWni2W35-XO')]])
 
 // Обработка кнопок из категории Вёрстка сайта с нуля
 bot.action('btn_category6', async (ctx) => {
