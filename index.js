@@ -347,7 +347,8 @@ bot.command('paid_course', async (ctx) => {
       [Markup.button.callback('Язык программирования PHP', 'btn_paid_8')],
       [Markup.button.callback('Сайт на Wordpress', 'btn_paid_9')],
       [Markup.button.callback('Планировщик задач Gulp', 'btn_paid_10')],
-      [Markup.button.callback('Bootstrap 5 для начинающих', 'btn_paid_11')]
+      [Markup.button.callback('Bootstrap 5 для начинающих', 'btn_paid_11')],
+      [Markup.button.callback('Frontend разработчик на HTML, CSS и JavaScript', 'btn_paid_12')],
     ]))
   } catch (e) {
     console.error(e)
@@ -396,6 +397,10 @@ send_msg_action('btn_paid_10', 'img/paid_course/10.jpg', paid_course['gulp'], [[
 send_msg_action('btn_paid_11', 'img/paid_course/11.jpg', paid_course['bs'], [[
   Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4246612/?referralCode=DCD972B91654B47D63FA'),
   Markup.button.url('Stepik', 'https://stepik.org/z/101173')
+]])
+send_msg_action('btn_paid_12', 'img/paid_course/12.jpg', paid_course['frontend'], [[
+  Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4402699/?referralCode=897A9E65D809AD2359AA'),
+  //Markup.button.url('Stepik', '')
 ]])
 
 // Команда /crib_js_date - Шпаргалка по date JS
