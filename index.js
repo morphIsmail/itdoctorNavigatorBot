@@ -8,14 +8,14 @@ const {
 // Подключить текстовые константы
 const CONST = require('./modules/const')
 // Подключить текст для бесплатных курсов
-const free_course = require('./modules/free_course')
+const y_course = require('./modules/y_course')
 // Подключить текст для платных курсов
-const paid_course = require('./modules/paid_course')
+const s_course = require('./modules/s_course')
 // Передать токен
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 // Старт бота
-bot.start((ctx) => ctx.reply(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : "незнакомец"}`+CONST.START_MSG, Markup.keyboard([
+bot.start((ctx) => ctx.reply(`Привет, ${ctx.message.from.first_name ? ctx.message.from.first_name : "Незнакомец"}!`+CONST.START_MSG, Markup.keyboard([
   ["❓ Об авторе"], 
   ["💰 Поддержать"], 
   ["✍️ Обратная связь"]
@@ -26,8 +26,8 @@ bot.help(async (ctx) => {
   try {
     await ctx.replyWithHTML(CONST.COMMANDS, Markup.inlineKeyboard(
       [
-        Markup.button.url('Обзор бота', 'https://youtu.be/IZj7up7CDdU'),
-        Markup.button.url('Как создать бота', 'https://youtu.be/YxHWfDdjIek'),
+        Markup.button.url('Обзор бота', 'https://t.me/itdoctor_official/37'),//https://youtu.be/IZj7up7CDdU
+        Markup.button.url('Как создать бота', 'https://t.me/itdoctor_official/35'),//https://youtu.be/YxHWfDdjIek
       ]
     ))
   } catch (e) {
@@ -46,8 +46,12 @@ bot.hears('❓ Об авторе', async (ctx) => {
       reply_markup: JSON.stringify({"inline_keyboard": [
         [
           Markup.button.url('YouTube', 'https://www.youtube.com/c/ITDoctor/about'),
-          Markup.button.url('Udemy', 'https://www.udemy.com/user/useinov-ismail-asanovich/'),
+          //Markup.button.url('Udemy', 'https://www.udemy.com/user/useinov-ismail-asanovich/'),
+          Markup.button.url('Stepik', 'https://stepik.org/users/387773773/teach'),
           Markup.button.url('GitHub', 'https://github.com/morphIsmail')
+        ],
+        [
+          Markup.button.url('Где меня искать?', 'https://t.me/itdoctor_official/29')
         ]
       ]})
     }, {
@@ -62,8 +66,8 @@ bot.hears('💰 Поддержать', async (ctx) => {
   try {
     await ctx.reply(CONST.DONATION, Markup.inlineKeyboard(
       [
-        Markup.button.url('YooMoney', 'https://sobe.ru/na/itdoctor'),
-        Markup.button.url('PayPal', 'https://paypal.me/itdoctorstudio')
+        Markup.button.url('Донат через ЮMoney', 'https://sobe.ru/na/itdoctor'),
+        //Markup.button.url('PayPal', 'https://paypal.me/itdoctorstudio')
       ]
     ))
   } catch (e) {
@@ -73,8 +77,12 @@ bot.hears('💰 Поддержать', async (ctx) => {
 // Кнопка "Обратная связь"
 bot.hears('✍️ Обратная связь', async (ctx) => {
   try {
-    await ctx.reply('🤔 Чтобы связаться с моим создателем, автором канала ITDoctor, перейди в группу канала нажав на кнопку ниже.', Markup.inlineKeyboard(
-      [Markup.button.url('Написать письмо', 'https://t.me/itdoctorstudio')]))
+    await ctx.reply('🤔 Чтобы связаться с моим создателем, автором канала ITDoctor, перейди в группу. А чтобы узнавать все самое новое подписывайся на канал нажав на кнопку ниже.', Markup.inlineKeyboard(
+      [
+        Markup.button.url('Группа', 'https://t.me/itdoctorstudio'),
+        Markup.button.url('Канал', 'https://t.me/itdoctor_official')
+      ]
+    ))
   } catch (e) {
     console.error(e)
   }
@@ -111,8 +119,8 @@ function send_msg_action(id, src, text, keyboard=[[]], preview=false) {
   })
 }
 
-// Команда /free_course - Бесплатные курсы
-bot.command('free_course', async (ctx) => {
+// Команда /y_course - Бесплатные курсы
+bot.command('y_course', async (ctx) => {
   try {
     await ctx.replyWithHTML('<b>Бесплатные курсы на <a href="https://www.youtube.com/c/ITDoctor/playlists">YouTube</a></b>', Markup.inlineKeyboard([
       [Markup.button.callback('Редакторы кода', 'btn_category1')],
@@ -148,10 +156,10 @@ bot.action('btn_category1', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category1_btn1', 'img/free_course/c1_b1.jpg', free_course[0][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIO74IrW8y6DohRKaL5o1N1F')]])
-send_msg_action('category1_btn2', 'img/free_course/c1_b2.jpg', free_course[0][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMzp2sMA9NSj4UX_pI-jECS')]])
-send_msg_action('category1_btn3', 'img/free_course/c1_b3.jpg', free_course[0][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIM_rvF3ARKFYu7jAjuRrON6')]])
-send_msg_action('category1_btn4', 'img/free_course/c1_b4.jpg', free_course[0][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINjpdYGtf2podRhv6DdrvKn')]])
+send_msg_action('category1_btn1', 'img/y_course/c1_b1.jpg', y_course[0][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIO74IrW8y6DohRKaL5o1N1F')]])
+send_msg_action('category1_btn2', 'img/y_course/c1_b2.jpg', y_course[0][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMzp2sMA9NSj4UX_pI-jECS')]])
+send_msg_action('category1_btn3', 'img/y_course/c1_b3.jpg', y_course[0][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIM_rvF3ARKFYu7jAjuRrON6')]])
+send_msg_action('category1_btn4', 'img/y_course/c1_b4.jpg', y_course[0][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINjpdYGtf2podRhv6DdrvKn')]])
 
 // Обработка кнопок из категории Инструменты
 bot.action('btn_category2', async (ctx) => {
@@ -175,12 +183,12 @@ bot.action('btn_category2', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category2_btn1', 'img/free_course/c2_b1.jpg', free_course[1][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINwXopVMV34_gWKV0yESNwJ')]])
-send_msg_action('category2_btn2', 'img/free_course/c2_b2.jpg', free_course[1][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOq9sXC3Hnj8KrCsP1egO6T')]])
-send_msg_action('category2_btn3', 'img/free_course/c2_b3.jpg', free_course[1][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINU_F29Ijq_MgeUwjrKaVqW')]])
-send_msg_action('category2_btn4', 'img/free_course/c2_b4.jpg', free_course[1][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINP2w4V37k8f5Jxp5j8ndfU')]])
-send_msg_action('category2_btn5', 'img/free_course/c2_b5.jpg', free_course[1][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOMB2R_Kky05ZfiAx2_pbAH')]])
-send_msg_action('category2_btn6', 'img/free_course/c2_b6.jpg', free_course[1][5], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIM7fEgWkXJvfiVOd2ecZyEE')]])
+send_msg_action('category2_btn1', 'img/y_course/c2_b1.jpg', y_course[1][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINwXopVMV34_gWKV0yESNwJ')]])
+send_msg_action('category2_btn2', 'img/y_course/c2_b2.jpg', y_course[1][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOq9sXC3Hnj8KrCsP1egO6T')]])
+send_msg_action('category2_btn3', 'img/y_course/c2_b3.jpg', y_course[1][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINU_F29Ijq_MgeUwjrKaVqW')]])
+send_msg_action('category2_btn4', 'img/y_course/c2_b4.jpg', y_course[1][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINP2w4V37k8f5Jxp5j8ndfU')]])
+send_msg_action('category2_btn5', 'img/y_course/c2_b5.jpg', y_course[1][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOMB2R_Kky05ZfiAx2_pbAH')]])
+send_msg_action('category2_btn6', 'img/y_course/c2_b6.jpg', y_course[1][5], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIM7fEgWkXJvfiVOd2ecZyEE')]])
 
 // Обработка кнопок из категории Основы вёрстки HTML и CSS
 bot.action('btn_category3', async (ctx) => {
@@ -203,11 +211,11 @@ bot.action('btn_category3', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category3_btn1', 'img/free_course/c3_b1.jpg', free_course[2][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMjV7Kff8yf8RA-XwjXVGgl')]])
-send_msg_action('category3_btn2', 'img/free_course/c3_b2.jpg', free_course[2][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOn8NTkZVsUn9jDCkdoJH9Z')]])
-send_msg_action('category3_btn3', 'img/free_course/c3_b3.jpg', free_course[2][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOYCKHrvn65GXvTRTnnGXyI')]])
-send_msg_action('category3_btn4', 'img/free_course/c3_b4.jpg', free_course[2][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOvzLBfgqsZKJJjphb-wugA')]])
-send_msg_action('category3_btn5', 'img/free_course/c3_b5.jpg', free_course[2][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIM2_X9rA_5DDE0rX9cjUQoX')]])
+send_msg_action('category3_btn1', 'img/y_course/c3_b1.jpg', y_course[2][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMjV7Kff8yf8RA-XwjXVGgl')]])
+send_msg_action('category3_btn2', 'img/y_course/c3_b2.jpg', y_course[2][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOn8NTkZVsUn9jDCkdoJH9Z')]])
+send_msg_action('category3_btn3', 'img/y_course/c3_b3.jpg', y_course[2][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOYCKHrvn65GXvTRTnnGXyI')]])
+send_msg_action('category3_btn4', 'img/y_course/c3_b4.jpg', y_course[2][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOvzLBfgqsZKJJjphb-wugA')]])
+send_msg_action('category3_btn5', 'img/y_course/c3_b5.jpg', y_course[2][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIM2_X9rA_5DDE0rX9cjUQoX')]])
 
 // Обработка кнопок из категории Frontend разработка
 bot.action('btn_category4', async (ctx) => {
@@ -215,22 +223,22 @@ bot.action('btn_category4', async (ctx) => {
     await ctx.answerCbQuery()
     await ctx.replyWithHTML('<b>Frontend разработка JS и jQuery</b>\n5 курсов\n127 видео уроков\n32 часа 25 минут', Markup.inlineKeyboard([
       [Markup.button.callback('1. Java Script для новичков 2021', 'category4_btn1')],
-      [Markup.button.callback('2. Java Script базовый курс', 'category4_btn2')],
-      [Markup.button.callback('3. Java Script продвинутый', 'category4_btn3')],
+      [Markup.button.callback('2. Java Script курс', 'category4_btn2')],
+      //[Markup.button.callback('3. Java Script продвинутый', 'category4_btn3')],
       [
-        Markup.button.callback('4. jQuery', 'category4_btn4'),
-        Markup.button.callback('5. Практика', 'category4_btn5')
+        Markup.button.callback('3. jQuery', 'category4_btn4'),
+        Markup.button.callback('4. Практика', 'category4_btn5')
       ]
     ]))
   } catch (e) {
     console.error(e)
   }
 })
-send_msg_action('category4_btn1', 'img/free_course/c4_b1.jpg', free_course[3][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINoCQtGZsMoVVCSgEH7gKQ5')]])
-send_msg_action('category4_btn2', 'img/free_course/c4_b2.jpg', free_course[3][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINjS4_G7KuYThU_T4uzpAuG')]])
-send_msg_action('category4_btn3', 'img/free_course/c4_b3.jpg', free_course[3][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPyoo60E-DPECak0G46k6k8')]])
-send_msg_action('category4_btn4', 'img/free_course/c4_b4.jpg', free_course[3][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIO6ys8_OmKphvobZxabbGBz')]])
-send_msg_action('category4_btn5', 'img/free_course/c4_b5.jpg', free_course[3][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINC98aWpSOHXCqaUkH6vd4K')]])
+send_msg_action('category4_btn1', 'img/y_course/c4_b1.jpg', y_course[3][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINoCQtGZsMoVVCSgEH7gKQ5')]])
+send_msg_action('category4_btn2', 'img/y_course/c4_b2.jpg', y_course[3][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINjS4_G7KuYThU_T4uzpAuG')]])
+//send_msg_action('category4_btn3', 'img/y_course/c4_b3.jpg', y_course[3][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPyoo60E-DPECak0G46k6k8')]])
+send_msg_action('category4_btn4', 'img/y_course/c4_b4.jpg', y_course[3][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIO6ys8_OmKphvobZxabbGBz')]])
+send_msg_action('category4_btn5', 'img/y_course/c4_b5.jpg', y_course[3][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINC98aWpSOHXCqaUkH6vd4K')]])
 
 // Обработка кнопок из категории Фреймворки
 bot.action('btn_category5', async (ctx) => {
@@ -247,9 +255,9 @@ bot.action('btn_category5', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category5_btn1', 'img/free_course/c5_b1.jpg', free_course[4][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIP8cwKmwmT2pAGFMnhI5qNO')]])
-send_msg_action('category5_btn2', 'img/free_course/c5_b2.jpg', free_course[4][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINmJ4DV22gtPL4--HQ49Df3')]])
-send_msg_action('category5_btn3', 'img/paid_course/4.jpg', free_course[4][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPrHjeWPtEw6KWni2W35-XO')]])
+send_msg_action('category5_btn1', 'img/y_course/c5_b1.jpg', y_course[4][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIP8cwKmwmT2pAGFMnhI5qNO')]])
+send_msg_action('category5_btn2', 'img/y_course/c5_b2.jpg', y_course[4][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINmJ4DV22gtPL4--HQ49Df3')]])
+send_msg_action('category5_btn3', 'img/s_course/4.jpg', y_course[4][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPrHjeWPtEw6KWni2W35-XO')]])
 
 // Обработка кнопок из категории Вёрстка сайта с нуля
 bot.action('btn_category6', async (ctx) => {
@@ -266,11 +274,11 @@ bot.action('btn_category6', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category6_btn1', 'img/free_course/c6_b1.jpg', free_course[5][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPKCe3dSJfqkGXS-Ebky02v')]])
-send_msg_action('category6_btn2', 'img/free_course/c6_b2.jpg', free_course[5][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMbdiCzaZuPjxXE24eAG5qo')]])
-send_msg_action('category6_btn3', 'img/free_course/c6_b3.jpg', free_course[5][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMEIav0T-g0VBM52C3cAhLC')]])
-send_msg_action('category6_btn4', 'img/free_course/c6_b4.jpg', free_course[5][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMsYvsJIxZ_PcLLwOHuvATv')]])
-send_msg_action('category6_btn5', 'img/free_course/c6_b5.jpg', free_course[5][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMhg69FDlaLjzDermknWbaB')]])
+send_msg_action('category6_btn1', 'img/y_course/c6_b1.jpg', y_course[5][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPKCe3dSJfqkGXS-Ebky02v')]])
+send_msg_action('category6_btn2', 'img/y_course/c6_b2.jpg', y_course[5][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMbdiCzaZuPjxXE24eAG5qo')]])
+send_msg_action('category6_btn3', 'img/y_course/c6_b3.jpg', y_course[5][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMEIav0T-g0VBM52C3cAhLC')]])
+send_msg_action('category6_btn4', 'img/y_course/c6_b4.jpg', y_course[5][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMsYvsJIxZ_PcLLwOHuvATv')]])
+send_msg_action('category6_btn5', 'img/y_course/c6_b5.jpg', y_course[5][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMhg69FDlaLjzDermknWbaB')]])
 
 // Обработка кнопок из категории Backend разработка
 bot.action('btn_category7', async (ctx) => {
@@ -294,17 +302,17 @@ bot.action('btn_category7', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category7_btn1', 'img/free_course/c7_b1.jpg', free_course[6][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIN_pFzp1vlu0PD3KXUrPTVS')]])
-send_msg_action('category7_btn2', 'img/free_course/c7_b2.jpg', free_course[6][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINWpCD2IbtMm-R5ClBA70Dw')]])
-send_msg_action('category7_btn3', 'img/free_course/c7_b3.jpg', free_course[6][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPgHRvtoFnIxSxyTt6vKGpi')]])
-send_msg_action('category7_btn4', 'img/free_course/c7_b4.jpg', free_course[6][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMXRHhNW_lQHR7c6bUeRVpP')]])
-send_msg_action('category7_btn5', 'img/free_course/c7_b5.jpg', free_course[6][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPnp9VCtshQ1F5pPsRhpTws')]])
-send_msg_action('category7_btn6', 'img/free_course/c7_b6.jpg', free_course[6][5], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINhZpY34wXFORiH-19OvNd4')]])
-send_msg_action('category7_btn7', 'img/free_course/c7_b7.jpg', free_course[6][6], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMcsw_n7C_7nrlupjB4RPK_')]])
-send_msg_action('category7_btn8', 'img/free_course/c7_b8.jpg', free_course[6][7], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINmSDbs8doggI-tJnnIJzev')]])
+send_msg_action('category7_btn1', 'img/y_course/c7_b1.jpg', y_course[6][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIN_pFzp1vlu0PD3KXUrPTVS')]])
+send_msg_action('category7_btn2', 'img/y_course/c7_b2.jpg', y_course[6][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINWpCD2IbtMm-R5ClBA70Dw')]])
+send_msg_action('category7_btn3', 'img/y_course/c7_b3.jpg', y_course[6][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPgHRvtoFnIxSxyTt6vKGpi')]])
+send_msg_action('category7_btn4', 'img/y_course/c7_b4.jpg', y_course[6][3], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMXRHhNW_lQHR7c6bUeRVpP')]])
+send_msg_action('category7_btn5', 'img/y_course/c7_b5.jpg', y_course[6][4], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPnp9VCtshQ1F5pPsRhpTws')]])
+send_msg_action('category7_btn6', 'img/y_course/c7_b6.jpg', y_course[6][5], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINhZpY34wXFORiH-19OvNd4')]])
+send_msg_action('category7_btn7', 'img/y_course/c7_b7.jpg', y_course[6][6], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMcsw_n7C_7nrlupjB4RPK_')]])
+send_msg_action('category7_btn8', 'img/y_course/c7_b8.jpg', y_course[6][7], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINmSDbs8doggI-tJnnIJzev')]])
 
 // Обработка кнопок из категории Лайфхаки
-send_msg_action('btn_category8', false, free_course[7][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIObijZKfE6zxneHDULP384M')]])
+send_msg_action('btn_category8', false, y_course[7][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIObijZKfE6zxneHDULP384M')]])
 
 // Обработка кнопок из категории 3D и Gamedev
 bot.action('btn_category9', async (ctx) => {
@@ -323,14 +331,15 @@ bot.action('btn_category9', async (ctx) => {
     console.error(e)
   }
 })
-send_msg_action('category9_btn1', 'img/free_course/c9_b1.jpg', free_course[8][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIN8XC9TS47ul2_-if5H2Whr')]])
-send_msg_action('category9_btn2', 'img/free_course/c9_b2.jpg', free_course[8][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINkImTtyf73C9AH-iNk56ns')]])
-send_msg_action('category9_btn3', 'img/paid_course/6.jpg', free_course[8][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPZ8LgiKvEg6IGCDlvNzLz-')]])
+send_msg_action('category9_btn1', 'img/y_course/c9_b1.jpg', y_course[8][0], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIN8XC9TS47ul2_-if5H2Whr')]])
+send_msg_action('category9_btn2', 'img/y_course/c9_b2.jpg', y_course[8][1], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINkImTtyf73C9AH-iNk56ns')]])
+send_msg_action('category9_btn3', 'img/s_course/6.jpg', y_course[8][2], [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPZ8LgiKvEg6IGCDlvNzLz-')]])
 
-// Команда /paid_course - платные курсы
-bot.command('paid_course', async (ctx) => {
+// Команда /s_course - платные курсы
+bot.command('s_course', async (ctx) => {
   try {
-    await ctx.replyWithHTML(`<b>Платные курсы на Udemy и Stepik</b>`, Markup.inlineKeyboard([
+    await ctx.replyWithHTML(`<b>Курсы на Stepik</b>`, Markup.inlineKeyboard([
+      [Markup.button.callback('Frontend разработчик на HTML, CSS и JavaScript', 'btn_paid_12')],
       [
         Markup.button.callback('HTML + CSS', 'btn_paid_1'),
         Markup.button.callback('Супер JavaScript', 'btn_paid_2')
@@ -347,61 +356,77 @@ bot.command('paid_course', async (ctx) => {
       [Markup.button.callback('Язык программирования PHP', 'btn_paid_8')],
       [Markup.button.callback('Сайт на Wordpress', 'btn_paid_9')],
       [Markup.button.callback('Планировщик задач Gulp', 'btn_paid_10')],
-      [Markup.button.callback('Bootstrap 5 для начинающих', 'btn_paid_11')],
-      [Markup.button.callback('Frontend разработчик на HTML, CSS и JavaScript', 'btn_paid_12')],
+      [Markup.button.callback('Bootstrap 5 для начинающих', 'btn_paid_11')], 
     ]))
   } catch (e) {
     console.error(e)
   }
 })
-send_msg_action('btn_paid_1', 'img/paid_course/1.jpg', paid_course['html'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/itdoctor_html_css/?referralCode=A2836649F9071CB3F903'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/101175')
+send_msg_action('btn_paid_12', 'img/s_course/12.jpg', s_course['frontend'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4402699/?referralCode=897A9E65D809AD2359AA'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/113402')
 ]])
-send_msg_action('btn_paid_2', 'img/paid_course/2.jpg', paid_course['js'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/javascript-super/?referralCode=4C766EEB83F94DC1AE19'),
-  //Markup.button.url('Stepik', '')
+send_msg_action('btn_paid_1', 'img/s_course/1.jpg', s_course['html'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/itdoctor_html_css/?referralCode=A2836649F9071CB3F903'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101175')
 ]])
-send_msg_action('btn_paid_3', 'img/paid_course/3.jpg', paid_course['jquery'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/jquery-itd/?referralCode=06E84B2AD8EF9A680F2A'),
-  //Markup.button.url('Stepik', '')
+send_msg_action('btn_paid_2', 'img/s_course/2.jpg', s_course['js'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/javascript-super/?referralCode=4C766EEB83F94DC1AE19'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/113653')
 ]])
-send_msg_action('btn_paid_4', 'img/paid_course/4.jpg', paid_course['vue'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/vuejs-itd/?referralCode=D19FBC885A62ACA1CE8A'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/99855')
+send_msg_action('btn_paid_3', 'img/s_course/3.jpg', s_course['jquery'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/jquery-itd/?referralCode=06E84B2AD8EF9A680F2A'),
+  //Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/113651')
+  Markup.button.url('Курс почти готов', 'https://stepik.org/users/387773773/teach')
 ]])
-send_msg_action('btn_paid_5', 'img/paid_course/5.jpg', paid_course['git'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/git-plus-github/?referralCode=28513EF1DA5DCB593C62'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/101092')
+send_msg_action('btn_paid_4', 'img/s_course/4.jpg', s_course['vue'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/vuejs-itd/?referralCode=D19FBC885A62ACA1CE8A'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/99855')
 ]])
-send_msg_action('btn_paid_6', 'img/paid_course/6.jpg', paid_course['bolt'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4159514/?referralCode=A747EA924EEE4118DAEC'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/101091')
+send_msg_action('btn_paid_5', 'img/s_course/5.jpg', s_course['git'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/git-plus-github/?referralCode=28513EF1DA5DCB593C62'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101092')
 ]])
-send_msg_action('btn_paid_7', 'img/paid_course/7.jpg', paid_course['mysql'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/mysql-and-phpmyadmin/?referralCode=CF3FF19B65634D02C659'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/101093')
+send_msg_action('btn_paid_6', 'img/s_course/6.jpg', s_course['bolt'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4159514/?referralCode=A747EA924EEE4118DAEC'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101091')
 ]])
-send_msg_action('btn_paid_8', 'img/paid_course/8.jpg', paid_course['php'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/php-itdoctor/?referralCode=B35480F4A2AD149AB1C6'),
-  //Markup.button.url('Stepik', '')
+send_msg_action('btn_paid_7', 'img/s_course/7.jpg', s_course['mysql'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/mysql-and-phpmyadmin/?referralCode=CF3FF19B65634D02C659'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101093')
 ]])
-send_msg_action('btn_paid_9', 'img/paid_course/9.jpg', paid_course['wp'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/landing-page-wordpress/?referralCode=1E19E5F729F287FA9466'),
-  //Markup.button.url('Stepik', '')
+send_msg_action('btn_paid_8', 'img/s_course/8.jpg', s_course['php'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/php-itdoctor/?referralCode=B35480F4A2AD149AB1C6'),
+  //Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/113652')
+  Markup.button.url('Курс почти готов', 'https://stepik.org/users/387773773/teach')
 ]])
-send_msg_action('btn_paid_10', 'img/paid_course/10.jpg', paid_course['gulp'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4239418/?referralCode=8E0E5539308712A9DF1C'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/101074')
+send_msg_action('btn_paid_9', 'img/s_course/9.jpg', s_course['wp'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/landing-page-wordpress/?referralCode=1E19E5F729F287FA9466'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/course/113393/promo')
 ]])
-send_msg_action('btn_paid_11', 'img/paid_course/11.jpg', paid_course['bs'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4246612/?referralCode=DCD972B91654B47D63FA'),
-  Markup.button.url('Stepik', 'https://stepik.org/z/101173')
+send_msg_action('btn_paid_10', 'img/s_course/10.jpg', s_course['gulp'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4239418/?referralCode=8E0E5539308712A9DF1C'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101074')
 ]])
-send_msg_action('btn_paid_12', 'img/paid_course/12.jpg', paid_course['frontend'], [[
-  Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4402699/?referralCode=897A9E65D809AD2359AA'),
-  //Markup.button.url('Stepik', '')
+send_msg_action('btn_paid_11', 'img/s_course/11.jpg', s_course['bs'], [[
+  //Markup.button.url('Udemy', 'https://www.udemy.com/course/draft/4246612/?referralCode=DCD972B91654B47D63FA'),
+  Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101173')
 ]])
+
+// Команда /free_training_plan - План бесплатного обучения
+bot.command('free_training_plan', async (ctx) => {
+  try {
+    await ctx.reply('Это план обучения созданию сайтов в 2021 году. Посмотрев видео урок вы узнаете, как можно на моем канале бесплатно научится создавать сайты с 0. Обязательно пользуйтесь схемой-навигатором, там все подробно расписано по пунктам', Markup.inlineKeyboard(
+      [
+        Markup.button.url('Схема PDF', 'https://t.me/itdoctorstudio/1879'),
+        Markup.button.url('Схема SVG', 'https://t.me/itdoctorstudio/1736'),
+        Markup.button.url('Урок', 'https://youtu.be/GnF56lwjMb4'),
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 // Команда /crib_js_date - Шпаргалка по date JS
 bot.command('crib_js_date', async (ctx) => {
@@ -467,21 +492,6 @@ bot.command('learn_emmet', async (ctx) => {
       [
         Markup.button.url('Документация', 'https://t.me/itdoctorstudio/1735'),
         Markup.button.url('Уроки', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOYCKHrvn65GXvTRTnnGXyI')
-      ]
-    ))
-  } catch (e) {
-    console.error(e)
-  }
-})
-
-// Команда /training_plan_2021 - План обучения в 2021
-bot.command('training_plan_2021', async (ctx) => {
-  try {
-    await ctx.reply('Это план обучения созданию сайтов в 2021 году. Посмотрев видео урок вы узнаете, как можно на моем канале бесплатно научится создавать сайты с 0. Обязательно пользуйтесь схемой-навигатором, там все подробно расписано по пунктам', Markup.inlineKeyboard(
-      [
-        Markup.button.url('Схема PDF', 'https://t.me/itdoctorstudio/1879'),
-        Markup.button.url('Схема SVG', 'https://t.me/itdoctorstudio/1736'),
-        Markup.button.url('Урок', 'https://youtu.be/GnF56lwjMb4'),
       ]
     ))
   } catch (e) {
