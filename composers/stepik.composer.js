@@ -43,10 +43,10 @@ lib.send_msg_action('btn_paid_5', 'img/s_course/5.jpg', 's_git', composer, [[Mar
 lib.send_msg_action('btn_paid_6', 'img/s_course/6.jpg', 's_bolt', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101091')]])
 lib.send_msg_action('btn_paid_7', 'img/s_course/7.jpg', 's_mysql', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101093')]])
 lib.send_msg_action('btn_paid_8', 'img/s_course/8.jpg', 's_php', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/113652')]])
-lib.send_msg_action('btn_paid_9', 'img/s_course/9.jpg', 's_wp', composer, [[Markup.button.url('Поступить на курс беслпатно', 'https://stepik.org/course/113393/promo')]])
+lib.send_msg_action('btn_paid_9', 'img/s_course/9.jpg', 's_wp', composer, [[Markup.button.url('Поступить на курс бесплатно', 'https://stepik.org/course/113393/promo')]])
 lib.send_msg_action('btn_paid_10', 'img/s_course/10.jpg', 's_gulp', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101074')]])
 lib.send_msg_action('btn_paid_11', 'img/s_course/11.jpg', 's_bs', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/101173')]])
 lib.send_msg_action('btn_paid_12', 'img/s_course/12.jpg', 's_frontend', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/z/113402')]])
-lib.send_msg_action('btn_paid_13', 'img/s_course/13.jpg', 's_emmet', composer, [[Markup.button.url('Поступить на курс беслпатно', 'https://stepik.org/course/113654/promo')]])
+lib.send_msg_action('btn_paid_13', 'img/s_course/13.jpg', 's_emmet', composer, [[Markup.button.url('Поступить на курс бесплатно', 'https://stepik.org/course/113654/promo')]])
 
 module.exports = composer

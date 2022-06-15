@@ -12,7 +12,7 @@ composer.action('btn_category6', async (ctx) => {
       [Markup.button.callback('3. Сайт на Wordpress, Bootstrap + SASS', 'category6_btn3')],
       [Markup.button.callback('4. Вёрстка из Marsy', 'category6_btn4')],
       [Markup.button.callback('5. Вёрстка из Figma', 'category6_btn5')],
-      [Markup.button.callback('6. Вёрстка из Figma', 'category6_btn6')],
+      [Markup.button.callback('6. Вёрстка из Figma 2022', 'category6_btn6')],
     ]))
   } catch (e) {
     console.error(e)

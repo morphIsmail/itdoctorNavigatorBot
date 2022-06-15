@@ -18,7 +18,8 @@ composer.action('btn_category7', async (ctx) => {
       [Markup.button.callback('5. Одностраничный сайт на Wordpress', 'category7_btn5')],
       [Markup.button.callback('6. Многостраничный сайт на Wordpress', 'category7_btn6')],
       [Markup.button.callback('7. Алгоритмы и блок-схемы', 'category7_btn7')],
-      [Markup.button.callback('8. Windows и Linux', 'category7_btn8')]
+      [Markup.button.callback('8. Windows и Linux', 'category7_btn8')],
+      [Markup.button.callback('9. Уроки по PHP и MySQL', 'category7_btn9')],
     ]))
   } catch (e) {
     console.error(e)
@@ -33,5 +34,6 @@ lib.send_msg_action('category7_btn5', 'img/y_course/c7_b5.jpg', 'backend_4', com
 lib.send_msg_action('category7_btn6', 'img/y_course/c7_b6.jpg', 'backend_5', composer, [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINhZpY34wXFORiH-19OvNd4')]])
 lib.send_msg_action('category7_btn7', 'img/y_course/c7_b7.jpg', 'backend_6', composer, [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIMcsw_n7C_7nrlupjB4RPK_')]])
 lib.send_msg_action('category7_btn8', 'img/y_course/c7_b8.jpg', 'backend_7', composer, [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleINmSDbs8doggI-tJnnIJzev')]])
+lib.send_msg_action('category7_btn9', 'img/y_course/c7_b9.jpg', 'backend_8', composer, [[Markup.button.url('Смотреть', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIPUDtVRCM4aEWQwdONcTXW5')]])
 
 module.exports = composer
