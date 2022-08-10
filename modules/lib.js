@@ -5,7 +5,7 @@
  * @param {String} text Текстовое сообщение для отправки
  * @param {Boolean} preview Блокировать превью у ссылок или нет, true - блокировать, false - нет
  */
- function send_msg_action(id, src, text, composer, keyboard=[[]], preview=false) {
+function send_msg_action(id, src, text, composer, keyboard=[[]], preview=false) {
   composer.action(id, async (ctx) => {
     try {
       await ctx.answerCbQuery()

@@ -34,12 +34,15 @@ composer.command('learn_css_flexbox', async (ctx) => {
 // Команда /learn_emmet - Быстрая вёрстка Emmet
 composer.command('learn_emmet', async (ctx) => {
   try {
-    await ctx.reply('Emmet позволяет использовать простые сокращения, которые позволяют очень быстро писать код на HTML и CSS', Markup.inlineKeyboard(
+    await ctx.reply('Emmet позволяет использовать простые сокращения, которые позволяют очень быстро писать код на HTML и CSS', Markup.inlineKeyboard([
       [
         Markup.button.url('Документация', 'https://t.me/itdoctorstudio/1735'),
         Markup.button.url('Уроки', 'https://www.youtube.com/playlist?list=PLuY6eeDuleIOYCKHrvn65GXvTRTnnGXyI')
-      ]
-    ))
+      ],
+      [
+        Markup.button.callback('Тренажер по вёрстке, плагин Emmet', 'btn_paid_13'),
+      ],
+    ]))
   } catch (e) {
     console.error(e)
   }
