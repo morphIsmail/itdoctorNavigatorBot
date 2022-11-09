@@ -14,6 +14,7 @@ composer.command('s_course', async (ctx) => {
       [Markup.button.callback('Язык программирования PHP', 'btn_paid_8')],
       [Markup.button.callback('Сайт на Wordpress (free)', 'btn_paid_9')],
       [Markup.button.callback('Тренажер по вёрстке, плагин Emmet (free)', 'btn_paid_13')],
+      [Markup.button.callback('Практический мини-курс по JavaScript и Bootstrap 5 (free)', 'btn_paid_14')],
       [
         Markup.button.callback('jQuery с нуля', 'btn_paid_3'),
         Markup.button.callback('Игра на Vue.js', 'btn_paid_4')
@@ -45,5 +46,6 @@ lib.send_msg_action('btn_paid_10', 'img/s_course/10.jpg', 's_gulp', composer, [[
 lib.send_msg_action('btn_paid_11', 'img/s_course/11.jpg', 's_bs', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/a/101173')]])
 lib.send_msg_action('btn_paid_12', 'img/s_course/12.jpg', 's_frontend', composer, [[Markup.button.url('Подробнее о курсе', 'https://stepik.org/a/113402')]])
 lib.send_msg_action('btn_paid_13', 'img/s_course/13.jpg', 's_emmet', composer, [[Markup.button.url('Поступить на курс бесплатно', 'https://stepik.org/course/113654/promo')]])
+lib.send_msg_action('btn_paid_14', 'img/s_course/14.jpg', 's_bsjs', composer, [[Markup.button.url('Поступить на курс бесплатно', 'https://stepik.org/course/125756/promo')]])
 
 module.exports = composer

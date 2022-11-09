@@ -22,7 +22,7 @@ composer.command('files', async (ctx) => {
 composer.action('btn_category_m1', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.reply('Мои репозитории на GitHub. Вы можете смотреть код который я пишу, а так же читать подробное описание под кодом в файле README и запускать код в некоторых проектах (ссылку вы найдете в разделе About или Environments)', Markup.inlineKeyboard(
+    await ctx.reply('Мои репозитории на GitHub. Вы можете смотреть код, который я пишу, а так же читать подробное описание под кодом в файле README и запускать код в некоторых проектах (ссылку вы найдете в разделе About или Environments)', Markup.inlineKeyboard(
       [
         [Markup.button.url('Возможности ссылок', 'https://github.com/morphIsmail/featuresWithLinks')],
         [Markup.button.url('Фикс даты у фото', 'https://github.com/morphIsmail/date-rename')],
@@ -104,7 +104,7 @@ composer.action('btn_category_m4', async (ctx) => {
 composer.action('btn_category_m5', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.reply('Книги по различным языкам, библиотекам и фреймворкам. Тут собраны только лучшие книги большинство из которых я сам прочитал и могу гарантировать их качество. Так же много задач для программирования на любом языке и отдельно для практики на JavaScript', Markup.inlineKeyboard(
+    await ctx.reply('Книги по различным языкам, библиотекам и фреймворкам. Тут собраны только лучшие книги большинство из которых я сам прочитал и могу гарантировать их качество. Так же много задач по программированию на любом языке и отдельно для практики на JavaScript', Markup.inlineKeyboard(
       [
         [Markup.button.url('Книги по HTML и CSS', 'https://t.me/itdoctorstudio/2133')],
         [Markup.button.url('Книги по JavaScript', 'https://t.me/itdoctorstudio/2134')],
